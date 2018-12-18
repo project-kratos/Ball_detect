@@ -30,32 +30,7 @@ def dothis(data):
 	greenUpper = (64, 255, 255)
 	pts = deque(maxlen=buffer_len)
 
-	# if a video path was not supplied, grab the reference
-	# to the webcam
-	#if not args.get("video", False):
-	#	vs = cv2.VideoCapture(0)
-
-	## otherwise, grab a reference to the video file
-	#else:
-	#	vs = cv2.VideoCapture(args["video"])
-
-	# allow the camera or video file to warm up
-#	time.sleep(2.0)
-
-	# keep looping
-	# while True:
-
-	# grab the current frame
-#	ret,frame = vs.read()
-
-	# handle the frame from VideoCapture or VideoStream
-#	frame = frame[1] if args.get("video", False) else frame
-
-	# if we are viewing a video and we did not grab a frame,
-	# then we have reached the end of the video
-	# if frame is None:
-	# 	break
-
+	
 	# resize the frame, blur it, and convert it to the HSV
 	# color space
 	frame = imutils.resize(frame, width=600)
@@ -87,7 +62,7 @@ def dothis(data):
 		# print(radius)
 		if radius > 2.5 and radius < 3 :
 			radius= radius * 2
-		print(str(600*3.42/radius))
+#		print(str(600*3.42/radius))
 		M = cv2.moments(c)
 		center = (int(M["m10"] / M["m00"]), int(M["m01"] / M["m00"]))
 		#print (center(0),center(1))
@@ -118,21 +93,6 @@ def dothis(data):
 	# show the frame to our screen
 	cv2.imshow("Frame", frame)
 	key = cv2.waitKey(1) & 0xFF
-
-	# if the 'q' key is pressed, stop the loop
-	# if key == ord("q"):
-	# 	break
-
-	# if we are not using a video file, stop the camera video stream
-	#if not args.get("video", False):
-	#	vs.stop()
-
-	# otherwise, release the camera
-	#else:
-	#	vs.release()
-
-	# close all windows
-	# cv2.destroyAllWindows()
 
 
 if __name__=="__main__":
